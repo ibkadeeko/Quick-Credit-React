@@ -38,7 +38,7 @@ header {
     order: 1;
     text-align: center;
 
-    .menu {
+    &.menu {
       display: none;
     }
 
@@ -70,6 +70,7 @@ header {
   .toggle-nav {
     font-size: $m-x-size;
     padding: 0.3rem 0.6rem;
+    cursor: pointer;
   }
 
   /********* BUTTONS *************/
@@ -87,44 +88,10 @@ header {
   .login_btn:hover {
     font-weight: 700;
   }
+}
 
-  .btn {
-    color: #fff;
-    cursor: pointer;
-    padding: 1rem 1.6rem;
-    border-radius: 0.8rem;
-    text-decoration: none;
-    text-align: center;
-    outline: none;
-  }
-
-  .btn-green {
-    background: &primary-green;
-    border-color: &primary-green;
-  }
-
-  .btn-primary {
-    background: rgb(68, 160, 141);
-    border-color: rgb(68, 160, 141);
-  }
-
-  .btn-warning {
-    background: #f0ad4e;
-    border-color: #f0ad4e;
-  }
-
-  .btn-danger {
-    background: #d9534f;
-    border-color: #d9534f;
-  }
-
-  .btn-green:hover,
-  .btn-green:active {
-    background: #32cca0;
-  }
-  /* ========================== */
-
-  @media only screen and (min-width: 770px) {
+@media only screen and (min-width: 770px) {
+  header {
     > .main-nav {
       flex-wrap: nowrap;
       height: 7rem;
@@ -138,7 +105,7 @@ header {
 
     nav > a {
       margin-top: 0;
-      margin-left: var(--m-size);
+      margin-left: $m-size;
       padding: 1rem 0;
     }
 
