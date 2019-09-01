@@ -1,6 +1,6 @@
 /* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import './Header.scss';
 
 export default class Header extends Component {
@@ -23,10 +23,10 @@ export default class Header extends Component {
       <header>
         <div className="container main-nav">
           <div className="logo">
-              <a href="#">quick credit</a>
+            <Link to="/">quick credit</Link>
           </div>
           <nav className={showMenu}>
-            <a className="login_btn btn-green" href="./html/login.html">sign in &#10230;</a>
+            <Link className="login_btn btn-green" to="/login">sign in &#10230;</Link>
           </nav>
           <div className="menu-toggle" onClick={this.toggleMenu}>
               <a className="toggle-nav" href="#">&#9776;</a>

@@ -1,0 +1,130 @@
+@import '../../assets/styles/settings.scss';
+
+/********* DASHBOARD SIDEBAR ***********/
+div#main-body > .wrapper {
+  height: calc(100vh - 12rem);
+}
+
+div#main-body > .wrapper #main {
+  height: 100%;
+  overflow: auto;
+}
+
+div#main-body > .wrapper #sidebar {
+  background: #7b7f83;
+  color: white;
+  cursor: pointer;
+  font-size: $m-size;
+  height: calc(100% - 12rem);
+  width: 25rem;
+  left: -25rem;
+  margin: 0;
+  position: fixed;
+  text-transform: uppercase;
+}
+
+div#main-body > .wrapper #sidebar.active {
+  left: 0px;
+  transition: all 600ms 300ms ease-in-out;
+}
+
+div#main-body > .wrapper #sidebar ul {
+  width: 100%;
+  margin-top: $m-2x-size;
+}
+div#main-body > .wrapper #sidebar ul li {
+  padding: 1.6rem 1rem;
+  border-bottom: 1px solid $primary-black;
+}
+
+div#main-body > .wrapper #sidebar ul li a.current {
+  color: white;
+  font-weight: 700;
+}
+
+@media only screen and (min-width: 770px) {
+  div#main-body > .wrapper {
+    display: flex;
+  }
+
+  div#main-body > .wrapper #main {
+    flex: 1;
+  }
+
+  div#main-body > .wrapper #sidebar {
+    position: inherit;
+    display: inherit;
+    height: 100%;
+  }
+}
+/* ==================================== */
+
+/******* USER DASHBOARD *******/
+.user-preview {
+  color: var(--primary-black);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 25rem);
+  justify-content: space-evenly;
+  margin: var(--m-2x-size) auto;
+}
+
+.user-preview > div {
+  background: #ffffff;
+  margin: var(--m-2x-size) auto;
+  height: 32rem;
+  width: 100%;
+  overflow: auto;
+}
+
+.loan-history {
+  margin: var(--m-2x-size) auto;
+  width: 100%;
+}
+
+.card-title {
+  background: var(--primary-black);
+  color: #fff;
+  font-size: var(--m-size);
+  line-height: var(--m-size);
+  padding: 2rem 3.2rem;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.card-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100% - 5.6rem);
+}
+
+.overview__title {
+  color: #7b7f83;
+  font-size: var(--m-size);
+  text-transform: capitalize;
+}
+
+.overview__value {
+  font-size: var(--m-2x-size);
+  text-align: center;
+  margin-bottom: var(--m-2x-size);
+}
+
+.card__header {
+  font-size: var(--m-2x-size);
+  text-align: center;
+  margin-bottom: var(--m-size);
+  line-height: 1.2;
+  text-transform: capitalize;
+  text-align: left;
+}
+
+.text-offset {
+  color: #7c7c80;
+  display: block;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+/* ========================== */
