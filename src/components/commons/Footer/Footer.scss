@@ -1,0 +1,19 @@
+@import "../../../assets/styles/settings.scss";
+
+footer {
+  background-color: $primary-black;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  width: 100%;
+  text-align: center;
+  font: normal $m-size sans-serif;
+  height: 5rem;
+  line-height: 5rem;
+  z-index: 2;
+
+  > p {
+    color: #fff;
+    font-size: 14px;
+    margin: 0;
+  }
+}
