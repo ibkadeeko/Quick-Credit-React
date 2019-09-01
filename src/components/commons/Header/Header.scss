@@ -1,0 +1,161 @@
+@import "../../../assets/styles/settings.scss";
+
+header {
+  background: $primary-black;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  .main-nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+    z-index: 2;
+  }
+
+  .main-nav .logo {
+    font-weight: 700;
+    font-size: $m-x-size;
+    margin-right: auto;
+    text-transform: uppercase;
+    height: 7rem;
+    line-height: 7rem;
+  }
+
+  .main-nav .logo a {
+    padding: 1rem 1.6rem 1rem 0;
+  }
+
+  nav {
+    align-items: center;
+    display: flex;
+    font-size: $m-size;
+    flex: 1 1 100%;
+    flex-direction: column;
+    order: 1;
+    text-align: center;
+
+    .menu {
+      display: none;
+    }
+
+    a {
+      padding: 1.6rem 0rem;
+      text-transform: uppercase;
+      color: #7b7f83;
+      margin-top: 1rem;
+      cursor: pointer;
+    }
+
+    a:last-child {
+      margin-bottom: $m-size;
+    }
+    a:first-child {
+      margin-top: 0;
+    }
+
+    a:hover {
+      color: white;
+    }
+
+    a.current {
+      color: white;
+      font-weight: 700;
+    }
+  }
+
+  .toggle-nav {
+    font-size: $m-x-size;
+    padding: 0.3rem 0.6rem;
+  }
+
+  /********* BUTTONS *************/
+  .login_btn {
+    color: white;
+    padding: 1rem 1.6rem;
+    border-radius: 0.8rem;
+  }
+
+  .login_btn.no-border,
+  .btn.no-border {
+    border-radius: 0;
+  }
+
+  .login_btn:hover {
+    font-weight: 700;
+  }
+
+  .btn {
+    color: #fff;
+    cursor: pointer;
+    padding: 1rem 1.6rem;
+    border-radius: 0.8rem;
+    text-decoration: none;
+    text-align: center;
+    outline: none;
+  }
+
+  .btn-green {
+    background: &primary-green;
+    border-color: &primary-green;
+  }
+
+  .btn-primary {
+    background: rgb(68, 160, 141);
+    border-color: rgb(68, 160, 141);
+  }
+
+  .btn-warning {
+    background: #f0ad4e;
+    border-color: #f0ad4e;
+  }
+
+  .btn-danger {
+    background: #d9534f;
+    border-color: #d9534f;
+  }
+
+  .btn-green:hover,
+  .btn-green:active {
+    background: #32cca0;
+  }
+  /* ========================== */
+
+  @media only screen and (min-width: 770px) {
+    > .main-nav {
+      flex-wrap: nowrap;
+      height: 7rem;
+    }
+
+    nav {
+      display: inherit;
+      flex-direction: row;
+      flex: none;
+    }
+
+    nav > a {
+      margin-top: 0;
+      margin-left: var(--m-size);
+      padding: 1rem 0;
+    }
+
+    nav > a:first-child {
+      margin-left: 0;
+    }
+
+    nav > a:last-child {
+      margin-bottom: 0;
+    }
+
+    nav.menu {
+      display: inherit;
+    }
+
+    .toggle-nav {
+      display: none;
+    }
+  }
+}

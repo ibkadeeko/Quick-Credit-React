@@ -1,0 +1,159 @@
+@import "../../assets/styles/settings.scss";
+
+#hero {
+  background: linear-gradient(
+      to right bottom,
+      rgba(69, 84, 100, 0.5),
+      rgba(38, 46, 55, 0.8)
+    ),
+    center / cover no-repeat url("../../assets/images/hero-bg.jpg");
+  color: white;
+  height: 50rem;
+  width: 100%;
+  margin-top: 7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#hero h2 {
+  font-size: $m-3x-size;
+}
+
+#hero p {
+  font-size: $m-x-size;
+}
+
+#hero .hero-btn {
+  font-size: $m-size;
+  margin-top: $m-3x-size;
+  margin-bottom: $m-size;
+}
+
+/******* HOW IT WORKS *********/
+#how-it-works,
+#right-for-you {
+  color: $primary-black;
+  line-height: $m-x-size;
+}
+
+.how-it-works__title {
+  font-size: $m-2x-size;
+  padding-top: $m-3x-size;
+  margin-bottom: $m-2x-size;
+  text-align: center;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+/* BOX DISPLAY */
+
+.box-display {
+  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 30rem);
+  grid-column-gap: 2rem;
+  justify-content: space-evenly;
+}
+
+.box-display > div {
+  padding: 0.15rem;
+  margin-bottom: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30rem;
+  text-align: center;
+}
+
+.box {
+  height: 35rem;
+}
+
+.box-content {
+  width: 100%;
+  margin: $m-x-size auto;
+  text-align: center;
+}
+
+.box-content .box-content__title {
+  font-size: $m-x-size;
+  margin-bottom: $m-x-size;
+}
+
+.box-content > p {
+  font-size: $m-size;
+}
+
+.img-wrap {
+  width: 50%;
+  margin: $m-x-size auto;
+}
+
+img {
+  max-width: 100%;
+  min-width: inherit;
+}
+/* ============================= */
+
+/******* RIGHT-FOR-YOU *******/
+.rfy-display {
+  display: flex;
+  flex-direction: column;
+}
+
+.rfy-img {
+  width: 100%;
+}
+
+.rfy-content {
+  flex: 1;
+  padding: $m-size;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.rfy-content p {
+  font-size: $m-size;
+  line-height: $m-2x-size;
+}
+
+.rfy-content .rfy__title {
+  font-size: $m-2x-size;
+  line-height: $m-3x-size;
+  padding-top: $m-x-size;
+  margin-bottom: $m-2x-size;
+  text-align: center;
+}
+
+.tick {
+  font-size: $m-x-size;
+  color: $primary-green;
+}
+/* ============================== */
+
+@media only screen and (min-width: 770px) {
+  .estimate-form {
+    max-width: 50rem;
+    margin-left: auto;
+  }
+
+  .rfy-display {
+    margin: 0 auto;
+    width: 80%;
+    flex-direction: row;
+  }
+
+  .rfy-img {
+    width: 30rem;
+  }
+
+  .rfy-content {
+    padding-left: $m-3x-size;
+  }
+
+  .rfy-content .rfy__title {
+    text-align: left;
+  }
+}

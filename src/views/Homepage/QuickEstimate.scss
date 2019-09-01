@@ -1,0 +1,115 @@
+@import "../../assets//styles/settings.scss";
+
+/******* QUICK ESTIMATE *******/
+#quick_estimate {
+  background: linear-gradient(
+      to right bottom,
+      rgba(69, 84, 100, 0.5),
+      rgba(38, 46, 55, 0.8)
+    ),
+    url(../../assets/images/estimate-bg.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: m-2x-size;
+
+  p.small {
+    font-size: $s-size;
+  }
+
+  .estimate-form {
+    background: $primary-black;
+    color: white;
+    padding: $m-size;
+    margin: $m-2x-size 0;
+
+    .estimate__title {
+      font-size: $m-x-size;
+      margin-bottom: $m-x-size;
+    }
+
+    > p {
+      font-size: $m-size;
+      margin-bottom: $s-size;
+    }
+
+    div.amount-display,
+    div.term-display {
+      font-size: $m-x-size;
+      height: 5rem;
+      line-height: 5rem;
+      text-align: center;
+    }
+
+    small {
+      color: #7b7f83;
+      display: flex;
+      font-size: $s-size;
+      margin-bottom: $m-2x-size;
+
+      > span {
+        margin-left: auto;
+      }
+    }
+  }
+
+  .estimate-display {
+    border: 2px solid white;
+    border-radius: 0.5rem;
+    padding: $m-size;
+
+    > p {
+      font-size: $m-size;
+      margin-bottom: $s-size;
+    }
+  }
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  background: transparent;
+}
+
+input[type="range"]:focus {
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 0.5rem;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  background: white;
+  border-radius: 2.5rem;
+  border: 0px solid #000101;
+}
+input[type="range"]::-webkit-slider-thumb {
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  border: 0px solid #000000;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: $primary-green;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -0.75rem;
+}
+
+input[type="range"]:focus::-webkit-slider-runnable-track {
+  background: white;
+}
+/* ===================================================== */
+
+@media only screen and (min-width: 770px) {
+  #quick_estimate {
+    .estimate-form {
+      max-width: 50rem;
+      margin-left: auto;
+    }
+  }
+}
