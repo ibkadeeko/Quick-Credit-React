@@ -292,7 +292,7 @@ header {
   resize: none;
 }
 
-.form button {
+.btn__form {
   background: $primary-green;
   border: 0;
   color: #ffffff;
@@ -307,9 +307,9 @@ header {
   width: 100%;
 }
 
-.form button:hover,
-.form button:active,
-.form button:focus {
+.btn__form:hover,
+.btn__form:active,
+.btn__form:focus {
   background: #32cca0;
 }
 

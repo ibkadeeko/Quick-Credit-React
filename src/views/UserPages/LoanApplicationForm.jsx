@@ -1,46 +1,90 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
-import { userInfo } from 'os';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { toast } from 'react-toastify';
 import Dashboard from '../Dashboard/Dashboard.jsx';
+import * as userLoanActions from '../../store/actions/userLoanActions';
 
-export default class LoanApplicationForm extends Component {
-  // static propTypes = {
-  //   prop: PropTypes
-  // }
+class LoanApplicationForm extends Component {
+  static propTypes = {
+    userDetails: PropTypes.shape({
+      firstname: PropTypes.string.isRequired,
+      lastname: PropTypes.string.isRequired,
+      email: PropTypes.string.isRequired,
+    }).isRequired,
+    isLoggedIn: PropTypes.bool.isRequired,
+    errorMessage: PropTypes.string.isRequired,
+    loanApplicationRequest: PropTypes.string.isRequired,
+    history: PropTypes.shape({
+      push: PropTypes.func.isRequired
+    }).isRequired
+  }
 
   constructor(props) {
     super(props);
     this.state = {
       bank: '',
-      accountNumber: 0,
-      loanAmount: 0,
-      tenor: 0,
+      accountNumber: '',
+      amount: '',
+      tenor: '',
+      saving: false
     };
   }
 
-  handleChange = (evt) => {}
+  handleChange = (evt) => {
+    const { name, value } = evt.target;
+    this.setState({ [name]: value });
+  }
+
+  handleSubmit = async (evt) => {
+    evt.preventDefault();
+    try {
+      const { history, loanApplicationRequest, userDetails } = this.props;
+      const {
+        bank, accountNumber, amount, tenor
+      } = this.state;
+      const { firstname: firstName, lastname: lastName, email } = userDetails;
+
+      this.setState({ saving: true });
+      await loanApplicationRequest({
+        firstName, lastName, email, bank, accountNumber, amount, tenor
+      });
+      toast.success('Your application has been sent');
+      this.setState({ saving: false });
+      history.push('/dashboard');
+    } catch (error) {
+      toast.error(error);
+      this.setState({ saving: false });
+    }
+  }
 
   render() {
     const {
-      bank, accountNumber, loanAmount, tenor
+      bank, accountNumber, amount, tenor, saving
     } = this.state;
+    const {
+      userDetails: {
+        firstname, lastname, email
+      }
+    } = this.props;
+
     return (
       <Dashboard>
          <div className="container">
             <div className="login-page">
               <div className="form">
-                <form id="loanApplication">
-                  <input name="fullName" type="text" value="firstname Lastname" readOnly />
-                  <input name="email" type="text" value="email@email.com" readOnly />
-                  <input name="phoneNumber" type="text" value="08007593000" readOnly />
+                <form id="loanApplication" onSubmit={this.handleSubmit}>
+                  <input name="fullName" type="text" value={`${firstname} ${lastname}`} readOnly />
+                  <input name="email" type="text" value={email} readOnly />
                   <input
                     name="bank"
                     id="bank"
                     type="text"
                     pattern="^[a-zA-Z]+(\s[a-zA-Z]+)*$"
-                  placeholder="Bank"
-                  value={this.state.bank}
-                    onChange={this.handleChange}
+                    placeholder="Bank"
+                    value={bank}
+                  onChange={this.handleChange}
+                  required
                   />
                   <input
                     name="accountNumber"
@@ -50,16 +94,18 @@ export default class LoanApplicationForm extends Component {
                   placeholder="Account Number"
                   value={accountNumber}
                   onChange={this.handleChange}
+                  required
                   />
                   <input
                     type="number"
-                    name="loanAmount"
-                    id="loanAmount"
+                    name="amount"
+                    id="amount"
                     min="10000"
                     max="200000"
                   placeholder="Loan Amount eg. 10000"
-                  value={loanAmount}
+                  value={amount}
                   onChange={this.handleChange}
+                  required
                   />
                   <input
                     type="number"
@@ -69,9 +115,12 @@ export default class LoanApplicationForm extends Component {
                     max="18"
                     placeholder="Number of months eg 12"
                     value={tenor}
-                    onChange={this.handleChange}
+                  onChange={this.handleChange}
+                  required
                   />
-                  <button>submit</button>
+                <button className="btn__form" type="submit" disabled={saving}>
+                  {saving ? 'Sending Application...' : 'submit'}
+                  </button>
                 </form>
               </div>
             </div>
@@ -80,3 +129,15 @@ export default class LoanApplicationForm extends Component {
     );
   }
 }
+
+const mapStateToProps = ({ auth, userLoan }) => ({
+  userDetails: auth.user,
+  isLoggedIn: auth.isLoggedIn,
+  errorMessage: userLoan.error
+});
+
+const mapDispatchToProps = {
+  loanApplicationRequest: userLoanActions.loanApplicationRequest
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoanApplicationForm);

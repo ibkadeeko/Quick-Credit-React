@@ -1,5 +1,9 @@
 const path = require('path');
+const dotenv = require('dotenv');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+dotenv.config();
 
 module.exports = {
   mode: 'development',
@@ -24,6 +28,9 @@ module.exports = {
     https: false
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify(process.env)
+    }),
     new HtmlWebpackPlugin({
       template: 'public/index.html',
       title: 'Quick Credit'
