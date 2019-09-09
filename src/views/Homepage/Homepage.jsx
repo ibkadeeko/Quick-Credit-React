@@ -1,20 +1,23 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Homepage.scss';
 import satisfiedImage from '../../assets/images/satisfied.png';
 import cashImage from '../../assets/images/cash.png';
 import loginImage from '../../assets/images/login.png';
 import ladyImage from '../../assets/images/lady.jpg';
 import QuickEstimate from './QuickEstimate.jsx';
+import Header from '../../components/commons/Header/Header.jsx';
 
 const Homepage = () => (
-    <>
+  <>
+    <Header />
       <section id="hero">
         <div className="container">
           <h2>Need a Loan?</h2>
           <h2>You are not Alone.</h2>
           <p>Smarter, Simple loans right when you need it.</p>
           <p className="hero-btn">
-            <a className="btn btn-green" href="./html/login.html">GET STARTED</a>
+            <Link className="btn btn-green" to="/register">GET STARTED</Link>
           </p>
         </div>
       </section>
