@@ -4,8 +4,11 @@
   "description": "A react Implementation of Quick Credit",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --config webpack.config.dev.js"
+    "prebuild": "npm run clean:build",
+    "build": "webpack --config webpack.config.prod.js",
+    "clean:build": "rimraf ./build && mkdir build",
+    "start": "node app.js",
+    "start:dev": "webpack-dev-server --config webpack.config.dev.js"
   },
   "repository": {
     "type": "git",
@@ -20,7 +23,9 @@
   "homepage": "https://github.com/ibkadeeko/Quick-Credit-React#readme",
   "dependencies": {
     "axios": "^0.19.0",
+    "debug": "^4.1.1",
     "dotenv": "^8.1.0",
+    "express": "^4.17.1",
     "jwt-decode": "^2.2.0",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
@@ -44,6 +49,7 @@
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.2.0",
+    "cssnano": "^4.1.10",
     "eslint": "^6.1.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-import-resolver-webpack": "^0.11.1",
@@ -55,13 +61,19 @@
     "fibers": "^4.0.1",
     "file-loader": "^4.2.0",
     "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.12.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "postcss-loader": "^3.0.0",
     "redux-immutable-state-invariant": "^2.1.0",
+    "rimraf": "^3.0.0",
     "sass": "^1.22.10",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
+    "terser-webpack-plugin": "^2.0.1",
     "url-loader": "^2.1.0",
     "webpack": "^4.39.3",
+    "webpack-bundle-analyzer": "^3.4.1",
     "webpack-cli": "^3.3.7",
     "webpack-dev-server": "^3.8.0"
   }
