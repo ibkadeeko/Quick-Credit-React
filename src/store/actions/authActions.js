@@ -17,16 +17,16 @@ export function userAuthRequest(formData, type) {
       let decoded;
       if (type === 'register') {
         response = await api.register(formData);
-        localStorage.setItem('currentUser', JSON.stringify(response));
         decoded = jwt(response.token);
         response.isAdmin = decoded.isAdmin;
+        localStorage.setItem('currentUser', JSON.stringify(response));
         return dispatch(userAuthSuccess(response));
       }
       if (type === 'login') {
         response = await api.login(formData);
-        localStorage.setItem('currentUser', JSON.stringify(response));
         decoded = jwt(response.token);
         response.isAdmin = decoded.isAdmin;
+        localStorage.setItem('currentUser', JSON.stringify(response));
         return dispatch(userAuthSuccess(response));
       }
     } catch (error) {

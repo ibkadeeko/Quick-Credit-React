@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import './Dashboard.scss';
 
 export default class Dashboard extends Component {
@@ -13,6 +13,10 @@ export default class Dashboard extends Component {
     this.state = {
       show: false
     };
+  }
+
+  handleLogOut = () => {
+    localStorage.clear();
   }
 
    toggleMenu = () => {
@@ -42,7 +46,7 @@ export default class Dashboard extends Component {
               <li><NavLink to="/dashboard" activeClassName="current">Dashboard</NavLink></li>
               <li><NavLink to="/loanApplication" activeClassName="current">Apply</NavLink></li>
               <li><a href="./user-history.html">Loan History</a></li>
-              <li><a href="../index.html">Log Out</a></li>
+              <li><Link to="/" onClick={this.handleLogOut}>Log Out</Link></li>
             </ul>
           </div>
           <div id="main">
