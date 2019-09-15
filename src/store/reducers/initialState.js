@@ -9,8 +9,8 @@ if (localStorage.getItem('currentUser') === null) {
 export default {
   auth: {
     user: currentUser.user || {},
-    isLoggedIn: false,
-    isAdmin: false,
+    isLoggedIn: !!currentUser.token,
+    isAdmin: currentUser.isAdmin || false,
     error: null
   },
   userLoan: {

@@ -8,7 +8,6 @@ export const register = async (formData) => {
   try {
     const data = JSON.stringify(formData);
     const response = await http.post('/auth/signup', data, options);
-    console.log('response :', response);
     return response.data;
   } catch (error) {
     throw error.response.data.error;
